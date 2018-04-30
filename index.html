@@ -4,7 +4,7 @@
 <body>
 	<h1>Test Case for Chromium <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=837185">bug 837185</a></h1>
 	<ol>
-		<li><a href="chromiumtest10:dummy.txt">Trigger Protocol</a> and notice that Chrome does nothing at all</li>
+		<li><a href="chromiumtest10:dummy.txt">Trigger Protocol</a> and notice that Chrome does nothing at all because the protocol is unregistered</li>
 		<li>
 			Register an external protocol, eg chromiumtest10:// and point it at notepad.exe
 			<br/>
@@ -19,8 +19,8 @@
 		</li>
 		
 		<li><a href="chromiumtest10:dummy.txt">Trigger Protocol</a> again (identical to step 1)</li>
-		<li>Tick "Open these types of links in the associated app"</li>
-		<li>Click "Launch" and notice that Notepad opens</li>
+		<li><b>Tick "Open these types of links in the associated app"</b></li>
+		<li>Click "Open Notepad" and notice that Notepad opens</li>
 		
 		<li>
 			Unregister the protocol
@@ -38,10 +38,12 @@
 			<a href="chromiumtest10:dummy.txt">Trigger Protocol</a> again (identical to step 1)
 		</li>
 		<li>
-			Notice that a Windows "You'll need a new app to open this" dialog appears, which is inconsistent with the results of step 1:
+			Notice that a Windows "You'll need a new app to open this" dialog appears, which is inconsistent with the results of step 1 where the protocol was unregistered:
 			<br/>
 			<img src="WindowsNewAppDialog.png"/>
 		</li>
 	</ol>
+	
+	Note that after following these steps, if you want to run them again you will need to clear your Chromium preferences to have it forget about the handler's BLOCK/DONT_BLOCK setting.
 </body>
 </html>
